@@ -1,24 +1,25 @@
 import type { Metadata } from 'next'
-import { Instrument_Serif, Inter, JetBrains_Mono } from 'next/font/google'
+import { Cormorant_Garamond, Plus_Jakarta_Sans, Space_Mono } from 'next/font/google'
 import './globals.css'
 
-const instrumentSerif = Instrument_Serif({
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['400'],
+  weight: ['300', '400', '500', '600'],
   style: ['normal', 'italic'],
   variable: '--font-serif',
   display: 'swap',
 })
 
-const inter = Inter({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-sans',
   display: 'swap',
 })
 
-const jetbrainsMono = JetBrains_Mono({
+const spaceMono = Space_Mono({
   subsets: ['latin'],
-  weight: ['400', '500'],
+  weight: ['400', '700'],
   variable: '--font-mono',
   display: 'swap',
 })
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="sk" className={`${instrumentSerif.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="sk" className={`${cormorant.variable} ${jakarta.variable} ${spaceMono.variable}`}>
       <body>{children}</body>
     </html>
   )

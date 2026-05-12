@@ -3,83 +3,52 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 
 export default function Background() {
   const { scrollYProgress } = useScroll()
-  const y1 = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
-  const y2 = useTransform(scrollYProgress, [0, 1], ['0%', '-20%'])
-  const y3 = useTransform(scrollYProgress, [0, 1], ['0%', '15%'])
+  const y1 = useTransform(scrollYProgress, [0, 1], ['0%', '28%'])
+  const y2 = useTransform(scrollYProgress, [0, 1], ['0%', '-18%'])
+  const y3 = useTransform(scrollYProgress, [0, 1], ['0%', '14%'])
 
   return (
     <>
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* editorial grid */}
+        {/* subtle dot grid */}
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage:
-              'linear-gradient(to right,rgba(12,18,32,0.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(12,18,32,0.05) 1px,transparent 1px)',
-            backgroundSize: '64px 64px',
-            maskImage: 'radial-gradient(ellipse at center,black 30%,transparent 80%)',
-            WebkitMaskImage: 'radial-gradient(ellipse at center,black 30%,transparent 80%)',
+            backgroundImage: 'radial-gradient(circle, rgba(12,18,32,0.07) 1px, transparent 1px)',
+            backgroundSize: '36px 36px',
+            maskImage: 'radial-gradient(ellipse at 50% 40%, black 20%, transparent 75%)',
+            WebkitMaskImage: 'radial-gradient(ellipse at 50% 40%, black 20%, transparent 75%)',
           }}
         />
 
-        {/* violet orb — top right */}
+        {/* blue orb — top right */}
         <motion.div
-          style={{ y: y1, position: 'absolute', top: -200, right: -150 }}
+          style={{ y: y1, position: 'absolute', top: -180, right: -160 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
         >
-          <div
-            className="orb-1"
-            style={{
-              width: 640,
-              height: 640,
-              background: '#5B21B6',
-              borderRadius: '50%',
-              filter: 'blur(100px)',
-              opacity: 0.28,
-            }}
-          />
+          <div style={{ width: 680, height: 680, background: '#1B48E8', borderRadius: '50%', filter: 'blur(120px)', opacity: 0.12 }} />
         </motion.div>
 
-        {/* cyan orb — bottom left */}
+        {/* indigo orb — bottom left */}
         <motion.div
-          style={{ y: y2, position: 'absolute', bottom: -100, left: -120 }}
+          style={{ y: y2, position: 'absolute', bottom: -80, left: -100 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2, delay: 0.3 }}
         >
-          <div
-            className="orb-2"
-            style={{
-              width: 520,
-              height: 520,
-              background: '#06B6D4',
-              borderRadius: '50%',
-              filter: 'blur(100px)',
-              opacity: 0.18,
-            }}
-          />
+          <div style={{ width: 560, height: 560, background: '#4169E1', borderRadius: '50%', filter: 'blur(110px)', opacity: 0.1 }} />
         </motion.div>
 
         {/* amber orb — center */}
         <motion.div
-          style={{ y: y3, position: 'absolute', top: '42%', left: '40%' }}
+          style={{ y: y3, position: 'absolute', top: '38%', left: '35%' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2, delay: 0.6 }}
         >
-          <div
-            className="orb-3"
-            style={{
-              width: 380,
-              height: 380,
-              background: '#B45309',
-              borderRadius: '50%',
-              filter: 'blur(90px)',
-              opacity: 0.12,
-            }}
-          />
+          <div style={{ width: 400, height: 400, background: '#C47F17', borderRadius: '50%', filter: 'blur(100px)', opacity: 0.07 }} />
         </motion.div>
       </div>
 
