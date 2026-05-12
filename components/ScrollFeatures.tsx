@@ -62,25 +62,35 @@ function FeatureSlide({
   const end = (index + 1) / total
   const mid = (start + end) / 2
 
+  // prvý slide je viditeľný hneď (opacity 1 od začiatku), ostatné sa fadujú dnu
+  const isFirst = index === 0
   const opacity = useTransform(
     scrollYProgress,
-    [start, start + 0.08, mid, end - 0.05, end],
-    [0, 1, 1, 0.85, 0]
+    isFirst
+      ? [0,          end - 0.06, end]
+      : [start,      start + 0.08, mid, end - 0.05, end],
+    isFirst
+      ? [1,          1,           0]
+      : [0,          1,           1,   0.85,         0]
   )
   const scale = useTransform(
     scrollYProgress,
-    [start, start + 0.1, end - 0.1, end],
-    [0.93, 1, 1, 0.95]
+    isFirst
+      ? [0, end - 0.1, end]
+      : [start, start + 0.1, end - 0.1, end],
+    isFirst
+      ? [1, 1, 0.95]
+      : [0.93, 1, 1, 0.95]
   )
   const xText = useTransform(
     scrollYProgress,
-    [start, start + 0.12],
-    [index % 2 === 0 ? -60 : 60, 0]
+    isFirst ? [0, 0] : [start, start + 0.12],
+    isFirst ? [0, 0] : [index % 2 === 0 ? -60 : 60, 0]
   )
   const xCard = useTransform(
     scrollYProgress,
-    [start, start + 0.12],
-    [index % 2 === 0 ? 50 : -50, 0]
+    isFirst ? [0, 0] : [start, start + 0.12],
+    isFirst ? [0, 0] : [index % 2 === 0 ? 50 : -50, 0]
   )
   const isLeft = index % 2 === 0
 
